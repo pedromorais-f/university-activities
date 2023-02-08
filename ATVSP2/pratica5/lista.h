@@ -2,6 +2,7 @@
 #define LISTA_H
 
 #include <stdbool.h>
+#include <string.h>
 
 typedef struct {
     char nome[31];

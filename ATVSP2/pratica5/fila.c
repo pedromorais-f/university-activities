@@ -28,4 +28,18 @@ void FilaLibera(Fila* pFila) {
 
 bool FilaInverte(Fila* pFila) {
     /* Preencher aqui */
+    Pilha pilha;
+    Celula *aux;
+
+    PilhaInicia(&pilha);
+    
+    aux = pFila->cabeca->prox;
+    while(aux != NULL){
+        PilhaPush(&pilha,aux->item);
+        aux = aux->prox;
+    }
+    
+    
+
+    
 }

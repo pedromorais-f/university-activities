@@ -26,9 +26,11 @@ bool ListaInsereFinal(Lista* pLista, Item item) {
 
 bool ListaInsereInicio(Lista* pLista, Item item) {
     /* Preencher aqui */
-    pLista->cabeca->prox = (Celula*) malloc(sizeof(Celula));
-    pLista->cabeca = pLista->cabeca->prox;
-    pLista->cabeca->item = item;
+    Celula *aux;
+    aux = (Celula*) malloc(sizeof(Celula));
+    aux->prox = pLista->cabeca->prox;
+    aux->item = item;
+    pLista->cabeca->prox = aux;
     return true;
 }
 
