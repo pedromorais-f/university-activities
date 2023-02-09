@@ -36,8 +36,6 @@ bool ListaInsereInicio(Lista* pLista, Item item) {
 
 bool ListaRetiraPrimeiro(Lista* pLista, Item* pItem) {
     /* Preencher aqui */
-    if(ListaEhVazia(&pLista))
-        return false;
     Celula *pAux;
     pAux = pLista->cabeca->prox;
     *pItem = pAux->item;
