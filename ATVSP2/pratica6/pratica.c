@@ -23,7 +23,7 @@ int main ()
 			printf("Marcelo\n");
 		}
 		//desalocar o vetor
-		desalocaVetor(vetor);
+		vetor = desalocaVetor(vetor);
 		movimentos = 0;
 	}
 
