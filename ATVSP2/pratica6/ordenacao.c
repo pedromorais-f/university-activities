@@ -12,7 +12,7 @@ int *alocaVetor(int *vetor, int n){
 //Manter como especificado
 int *desalocaVetor(int *vetor){
     free(vetor);
-    return vetor;
+    return 1;;
 }
 
 void ordenacao(int *vetor, int n, int *movimentos){
