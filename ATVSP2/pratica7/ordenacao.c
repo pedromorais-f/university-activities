@@ -27,11 +27,6 @@ void ordena(Aluno *alunos, int n) {
             alunos[j + espaco] = aux;
         }
     }while(espaco > 1);
-    
-
-    /*for(int i = 0;i < n;i++){
-        printf("%s\n",alunos[i].nome);
-    }*/
 }
 
 // Manter como especificado
@@ -45,12 +40,7 @@ int compare(const char* aluno1, const char* aluno2) {
 /* Manter como especificado */
 void imprimeResposta(Aluno* alunos, int n, int k) {
     // PREENCHER AQUI
-    for(int i = 0;i < n;i++){
-        if(i == k - 1){
-            printf("%s\n",alunos[i].nome);
-            break;
-        }
-    }
+    printf("%s\n",alunos[n - k].nome);
 }
 
 /* Manter como especificado */
@@ -78,9 +68,6 @@ void leAlunos(Aluno* alunos, int n) {
 /* Manter como especificado */
 void leQuantidades(int* n, int* k) {
     // PREENCHER AQUI
-    scanf("%d",n);
-    getchar();
-    scanf("%d",k);
-    getchar();
+    scanf("%d %d",n,k);
 }
 
