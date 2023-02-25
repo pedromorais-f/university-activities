@@ -3,6 +3,11 @@
 
 typedef struct {
     // preencher com os dados de cada time
+    int cestasMarcadas;
+    int cestasRecebidas;
+    float razao;
+    int pontos;
+    int inscricao;
 } Time;
 
 // Manter como especificado
@@ -16,5 +21,11 @@ void desalocaVetor(Time **vetor);
 
 // faz a comparacao utilizada para ordenar os times
 int compare(Time t1, Time t2);
+
+void atualizarDados(Time *times,int time1,int time2,int pontos1,int pontos2);
+
+void calcularSaldoDeCestas(Time *times,int n);
+
+void imprimeCampeonato(Time *times,int instancia,int n);
 
 # endif
