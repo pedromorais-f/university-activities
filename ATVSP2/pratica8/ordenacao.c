@@ -78,7 +78,11 @@ void calcularSaldoDeCestas(Time *times,int n){
         cestasMarcadas = times[i].cestasMarcadas;
         cestasRecebidas = times[i].cestasRecebidas;
 
-        razao = (cestasRecebidas == 0) ? times[i].cestasMarcadas : (float)cestasMarcadas/cestasRecebidas;
+        if(cestasRecebidas == 0){
+            razao = cestasMarcadas;
+        }else{
+            razao = (float)cestasMarcadas / cestasRecebidas;
+        }
 
         times[i].razao = razao;
     }
