@@ -4,6 +4,7 @@
 int main()
 {
     //enquanto houver dados
+    int instancia = 0;
     while (1) {
         int n;
         int time1, time2, pontos1, pontos2;
@@ -13,11 +14,10 @@ int main()
         //leia o numero de times
         scanf("%d", &n);
 
-        int instancia = 0;
 
         //se for zero, o programa acaba
         if(n == 0){
-            break;
+            return 0;
         }else{
             instancia++;
         }
@@ -35,6 +35,8 @@ int main()
             // preencher o vetor de estruturas de acordo com os dados lidos
             atualizarDados(vetor,time1,time2,pontos1,pontos2);
         }
+
+        calcularSaldoDeCestas(vetor,n);
 
         // ordenar os times
         ordenacao(vetor, n);

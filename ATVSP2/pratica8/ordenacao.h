@@ -19,6 +19,10 @@ Time *alocaVetor(int n);
 // Manter como especificado
 void desalocaVetor(Time **vetor);
 
+void heapRefaz(Time *times,int esq,int dir);
+
+void heapConstroi(Time *times,int n);
+
 // faz a comparacao utilizada para ordenar os times
 int compare(Time t1, Time t2);
 

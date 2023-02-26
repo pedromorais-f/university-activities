@@ -1,4 +1,6 @@
 #include "ordenacao.h"
+#include <stdlib.h>
+#include<stdio.h>
 
 // Manter como especificado
 Time *alocaVetor(int n) {
@@ -19,9 +21,45 @@ void desalocaVetor(Time **vetor) {
     free(*vetor);
 }
 
+void heapRefaz(Time *times,int esq,int dir){
+    int i = esq;
+    int j = i * 2 + 1;
+    Time aux = times[i];
+
+    while(j <= dir){
+        if(j < dir && compare(times[j],times[j + 1]) == 1){
+            j++;
+        }
+        if(compare(aux,times[j]) == 2){
+            break;
+        }
+        times[i] = times[j];
+        i = j;
+        j = i * 2 + 1;
+    }
+    times[i] = aux;
+}
+
+void heapConstroi(Time *times,int n){
+    int esq = (n / 2) - 1;
+    
+    while(esq >= 0){
+        heapRefaz(times,esq,n - 1);
+        esq--;
+    }
+}
+
 // implemente sua funcao de ordenacao aqui, que deve invocar a funcao compare
 void ordenacao(Time *vetor, int n) {
-
+    heapConstroi(vetor,n);
+    
+    while(n > 1){
+        Time aux = vetor[n - 1];
+        vetor[n - 1] = vetor[0];
+        vetor[0] = aux;
+        n--;
+        heapRefaz(vetor,0,n - 1);
+    }
 }
 
 // compara dois elementos do vetor de times, indicado se o metodo de ordenacao deve troca-los de lugar ou nao
@@ -44,7 +82,7 @@ int compare(const Time t1, const Time t2) {
                 if(t1.inscricao < t2.inscricao){
                     return 1;
                 }
-                else{
+                else if(t2.inscricao < t1.inscricao){
                     return 2;
                 }
             }
@@ -81,10 +119,10 @@ void calcularSaldoDeCestas(Time *times,int n){
         if(cestasRecebidas == 0){
             razao = cestasMarcadas;
         }else{
-            razao = (float)cestasMarcadas / cestasRecebidas;
+            razao = ((float)cestasMarcadas) / cestasRecebidas;
         }
 
-        times[i].razao = razao;
+        times[i].razao += razao;
     }
 }
 
