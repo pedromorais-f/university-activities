@@ -133,6 +133,6 @@ void imprimeCampeonato(Time *times,int instancia,int n){
         printf("%d ",times[i].inscricao);
     }
 
-    printf("\n\n");
+    printf("\n");
 
 }

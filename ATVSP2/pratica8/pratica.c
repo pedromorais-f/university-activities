@@ -5,6 +5,7 @@ int main()
 {
     //enquanto houver dados
     int instancia = 0;
+    int salto = 0;
     while (1) {
         int n;
         int time1, time2, pontos1, pontos2;
@@ -20,6 +21,9 @@ int main()
             return 0;
         }else{
             instancia++;
+            if(salto > 0){
+                printf("\n");
+            }
         }
 
         //aloque o vetor
@@ -27,6 +31,7 @@ int main()
 
         //calcula o numero de partidas
         npartidas = n * (n - 1) / 2;
+        
 
         //para cada partida...
         for (i = 0; i < npartidas; ++i) {
@@ -43,7 +48,8 @@ int main()
 
         // imprima o resultado
         imprimeCampeonato(vetor,instancia,n);
-
+        salto++;
+        
         // desaloque o vetor
         desalocaVetor(&vetor);
     }
