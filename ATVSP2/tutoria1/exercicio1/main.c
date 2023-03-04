@@ -7,7 +7,7 @@ int main(){
 
     char str[MAX_TAM],beiju[MAX_TAM];
     
-    int length,lengthBeiju = 0;
+    int length,lengthBeiju = -1;
 
     char c;
    
@@ -28,15 +28,14 @@ int main(){
             if(c == '['){
                 int j;
                 for(j = i + 1;j < length && str[j] != '[' && str[j] != ']';j++){
-                    beiju[lengthBeiju++] = str[j];
+                    beiju[++lengthBeiju] = str[j];
                 }
-                beiju[lengthBeiju + 1] = '\0';
                 
                 for(int k = lengthBeiju;k >= 0;k--){
                     TLista_Insere_Inicio(&lista,beiju[k]);
                 }
-                
-                lengthBeiju = 0;
+                beiju[lengthBeiju + 1] = '\0';
+                lengthBeiju = -1;
                 i = j - 1;
             }else if(str[i] != ']'){
                 TLista_Insere_Fim(&lista,str[i]);
