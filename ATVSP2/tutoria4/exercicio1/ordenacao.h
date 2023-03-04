@@ -10,6 +10,10 @@ void preencheVetor(TADupa *upas, int n); //lendo as informacoes sobre as upas
 void ordenaUpas(TADupa *upas, int n); //ordenando as upas de acordo com a necessidade, o metodo utilizado
                                     
 
-void imprimeUpas(TADupa *upas, int n); //funcao que imprime as upas apos a ordenacao  
+void imprimeUpas(TADupa *upas, int n); //funcao que imprime as upas apos a ordenacao
+
+int compare(TADupa upa1,TADupa upa2);
+
+void desalocaUpas(TADupa **aux);
 
 #endif
