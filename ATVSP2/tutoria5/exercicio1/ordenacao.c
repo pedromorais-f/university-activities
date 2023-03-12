@@ -28,7 +28,6 @@ void heapConstroi(Student *students,int n){
     }
 }
 
-// implemente sua funcao de ordenacao aqui, que deve invocar a funcao compare
 void ordenacao(Student *vetor, int n) {
     heapConstroi(vetor,n);
     

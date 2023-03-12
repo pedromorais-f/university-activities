@@ -6,16 +6,20 @@ int main(){
     scanf("%d",&cases);
 
     while (cases != 0){
+        
+        getchar();
+        getchar();
+
         Student *students;
         students = (Student*) malloc(cases * sizeof(Student));
 
         for(int i = 0; i < cases; i++){
-            fgets(students[i].name,64,stdin);
-            students[i].name[strcspn(students[i].name, "\n")] = 0;
+            char name[64];
+            fgets(name,64,stdin);
+            name[strcspn(name, "\n")] = 0;
+            strcpy(students[i].name,name);
             
-            scanf("%s",students[i].color);
-            getchar();
-            scanf("%c",&students[i].size);
+            scanf("%s %c\n",students[i].color,&students[i].size);
         }
 
         ordenacao(students,cases);
@@ -23,9 +27,13 @@ int main(){
         for(int j = 0; j < cases; j++){
             printf("%s %c %s\n",students[j].color,students[j].size,students[j].name);
         }
+
         
         free(students);
-        scanf("%d",&cases);  
+        scanf("%d",&cases); 
+
+        if(cases != 0)
+            printf("\n"); 
     }
     
 
