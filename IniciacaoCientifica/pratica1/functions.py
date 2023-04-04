@@ -17,7 +17,7 @@ def write_file():
     name_file = file_path("txt")
     f = open(name_file, "w")
 
-    data_list = []
+    data_list = list()
     flag = True
 
     while flag:
@@ -56,5 +56,7 @@ def read_file():
         
         
     f.close()
+    
+f = write_file()
 
 
