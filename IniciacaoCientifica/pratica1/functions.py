@@ -1,5 +1,6 @@
 import pandas as pd
 import csv
+import os
 
 def file_path(extension):
     name_file = input("Put the file's name to read:")
@@ -114,5 +115,11 @@ def read_file_csv():
     except:
         print("\nError: The file could not be read")
         return
-
+    
+    
+def list_of_files():
+    name_dir = input("Write the path of directory:")
+    
+    for name_dir,name_files,f_file in os.walk(name_dir):
+        print(f_file) 
 
