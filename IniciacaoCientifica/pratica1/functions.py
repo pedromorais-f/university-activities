@@ -49,15 +49,12 @@ def read_file():
             for i, file_line in enumerate(file_lines):
                 file_line = file_line.replace("\n", "")
                 print(f"{i + 1}| {file_line}")
+        f.close()
     except:
         print("\nError: The file could not be read")
         return
 
         
-        
-    f.close()
-    
-    
 def write_file_csv():
     name_file = file_path("csv")
     
@@ -93,9 +90,7 @@ def write_file_csv():
         with open(name_file, "w") as f:
             data_writer = csv.writer(f)
             for row in data_list:
-                data_writer.writerow(row)
-           
-            
+                data_writer.writerow(row) 
         f.close()
         
 def read_file_csv():
