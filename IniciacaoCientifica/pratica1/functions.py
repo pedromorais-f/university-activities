@@ -3,7 +3,7 @@ import csv
 import os
 
 def file_path(extension):
-    name_file = input("Put the file's name to read:")
+    name_file = input("Put the file's name:")
 
     name_file_split = name_file.split(".")
 
@@ -15,7 +15,6 @@ def file_path(extension):
 
 def write_file():
     name_file = file_path("txt")
-    f = open(name_file, "w")
 
     data_list = list()
     flag = True
@@ -33,9 +32,9 @@ def write_file():
         else:
             print("Please, put a valid answer\n")
 
-
-    for data in data_list:
-        f.write(f"{data}\n")
+    with open(name_file, "w") as f:
+        for data in data_list:
+            f.write(f"{data}\n")
 
     f.close()
 
@@ -44,12 +43,12 @@ def read_file():
     name_file = file_path("txt")
 
     try:
-        f = open(name_file, "r")
-        file_lines = f.readlines()
-        
-        for i, file_line in enumerate(file_lines):
-            file_line = file_line.replace("\n", "")
-            print(f"{i + 1}| {file_line}")
+        with open(name_file, "r") as f:
+            file_lines = f.readlines()
+            
+            for i, file_line in enumerate(file_lines):
+                file_line = file_line.replace("\n", "")
+                print(f"{i + 1}| {file_line}")
     except:
         print("\nError: The file could not be read")
         return
@@ -122,4 +121,3 @@ def list_of_files():
     
     for name_dir,name_files,f_file in os.walk(name_dir):
         print(f_file) 
-
