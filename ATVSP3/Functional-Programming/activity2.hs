@@ -1,4 +1,4 @@
-module Exercise2 where
+module Activity2 where
 
 exclusiveOr :: Bool -> Bool -> Bool
 exclusiveOr p q
