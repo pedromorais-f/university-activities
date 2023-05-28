@@ -12,7 +12,8 @@ add x y z = x + y + z
 copy :: a -> (a, a)
 copy x = (x, x)
 
---apply :: (a -> b) -> a -> b
+apply :: (a -> b) -> a -> b
+apply f x = x
 
 swap :: (a,b) -> (b,a)
 swap (x, y) = (y ,x)
