@@ -4,7 +4,6 @@
 using namespace std;
 
 class Cliente{
-private:
     string nome;
     int id;
     string endereco;
@@ -34,13 +33,12 @@ void Cliente::setEndereco(string endereco){ this->endereco = endereco; }
 string Cliente::getEndereco() const{ return endereco; }
 
 
-class Data : public Cliente{
-private:
+class Data{
     int dia;
     int mes;
     int ano;
 public:
-    Data(string="", int=0, string="", int=0, int=0, int=0);
+    Data(int=0, int=0, int=0);
     ~Data();
     void setDia(int);
     int getDia() const;
@@ -50,7 +48,7 @@ public:
     int getAno() const;
 };
 
-Data::Data(string nome, int id, string endereco, int dia, int mes, int ano) : Cliente(nome, id, endereco){
+Data::Data(int dia, int mes, int ano){
     this->dia = dia;
     this->mes = mes;
     this->ano = ano;
@@ -66,26 +64,63 @@ void Data::setAno(int endereco){ this->ano = ano; }
 int Data::getAno() const{ return ano; }
 
 
-class Conta : public Data{
+class Conta{
 private:
     int num_conta;
     double saldo;
+    Cliente cliente;
+    Data data;
 public:
-    Conta(string="", int=0, string="", int=0, int=0, int=0, int=0, double=200.0);
+    Conta(int=0, double=200.0, Cliente&, Data&);
     ~Conta();
+    bool depositar(double);
+    bool saque(double);
+    bool tranferencia(Conta&, double);
+    void mostrarDados() const;
 };
 
-Conta::Conta(string nome, int id, string endereco, int dia, int mes, int ano, int num_conta, double saldo) : Data(nome, id, endereco, dia, mes, ano){
+Conta::Conta(int num_conta, double saldo, Cliente& cliente, Data& data){
     this->num_conta = num_conta;
     this->saldo = saldo;
+    this->cliente = cliente;
+    this->data = data;
 }
 
 Conta::~Conta(){}
 
+bool Conta::depositar(double valor){
+    if(valor > 0){
+        saldo += valor;
+        return true;
+    }
 
+    return false;
+}
+
+bool Conta::saque(double valor){
+    if(valor > 0 && (saldo > valor)){
+        saldo -= valor;
+        return true;
+    }else{
+        cout << "Error" << endl;
+        return false;
+    }
+}
+
+bool Conta::tranferencia(Conta& cliente, double valor){
+    if(valor > 0 && saldo > valor){
+        cliente.saldo += valor;
+        return true;
+    }else{
+        cout << "Error" << endl;
+        return false;
+    }
+}
 
 int main(int argc, char const *argv[]){
     
-
+    Cliente c1("Jose", 1234, "Rua 1"), c2("Joao", 5678, "Rua 2");
+    Data d1(23, 3, 1980), d2(21, 7, 2012);
+    Conta con1(198,0.0,c1,d1);
     return 0;
 }
