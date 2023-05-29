@@ -71,7 +71,7 @@ private:
     Cliente cliente;
     Data data;
 public:
-    Conta(int=0, double=200.0, Cliente&, Data&);
+    Conta(int, double, Cliente&, Data&);
     ~Conta();
     bool depositar(double);
     bool saque(double);
@@ -110,6 +110,7 @@ bool Conta::saque(double valor){
 bool Conta::tranferencia(Conta& cliente, double valor){
     if(valor > 0 && saldo > valor){
         cliente.saldo += valor;
+        saldo -= valor;
         return true;
     }else{
         cout << "Error" << endl;
@@ -117,10 +118,51 @@ bool Conta::tranferencia(Conta& cliente, double valor){
     }
 }
 
+void Conta::mostrarDados() const{
+     cout << "Informacoes Gerais: " << cliente.getNome()  <<  cliente.getEndereco()  << cliente.getId()  << endl;
+     cout << "Data de entrada: " <<  data.getDia() << "/" <<  data.getMes() << "/" <<  data.getAno()  << endl;
+     cout << "Numero da Conta: " <<  num_conta << endl;
+     cout << "Saldo: " <<  saldo << endl;   
+}
+
 int main(int argc, char const *argv[]){
     
-    Cliente c1("Jose", 1234, "Rua 1"), c2("Joao", 5678, "Rua 2");
+    Cliente c1(" Jose", 1234, " Rua 1 "), c2(" Joao", 5678, " Rua 2 ");
     Data d1(23, 3, 1980), d2(21, 7, 2012);
-    Conta con1(198,0.0,c1,d1);
+    Conta con1(198, 0.0, c1, d1), con2(205, 500.0, c2, d2);
+
+    con1.mostrarDados();
+
+    cout << endl;
+    cout << endl;
+
+    con2.mostrarDados();
+
+    cout << "--------------------------------------------" << endl;
+
+    con2.tranferencia(con1, 200.0);
+
+    con1.mostrarDados();
+
+    cout << endl;
+    cout << endl;
+
+    con2.mostrarDados();
+
+    cout << "--------------------------------------------" << endl;
+
+    con1.saque(100.0);
+    con2.depositar(100.0);
+
+    con1.mostrarDados();
+
+    cout << endl;
+    cout << endl;
+
+    con2.mostrarDados();
+
+    cout << "--------------------------------------------" << endl;
+
+    
     return 0;
 }
