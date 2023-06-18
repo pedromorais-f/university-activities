@@ -22,7 +22,7 @@ void Minimo(TipoRegistro *x, TipoApontador Ap)
 {
     int pag = 1;
     if(Ap->p[pag - 1] != NULL)
-        return Minimo(x, Ap->p[pag - 1]);
+        Minimo(x, Ap->p[pag - 1]);
     else
         *x = Ap->r[0];
 }
