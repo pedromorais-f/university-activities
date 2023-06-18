@@ -1,4 +1,4 @@
-module Activity3 where
+
 
 bools :: [Bool]
 bools = [True, False, False, True]

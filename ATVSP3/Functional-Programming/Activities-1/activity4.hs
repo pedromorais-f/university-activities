@@ -1,4 +1,4 @@
-module Activity4 where
+
 
 minList :: Ord a => [a] -> a
 minList [] = error "empty list"

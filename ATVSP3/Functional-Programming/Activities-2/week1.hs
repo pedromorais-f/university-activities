@@ -1,4 +1,3 @@
-module Week1 where
 
 import Prelude hiding (gcd)
 

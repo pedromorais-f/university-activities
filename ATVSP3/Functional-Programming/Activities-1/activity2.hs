@@ -1,4 +1,4 @@
-module Activity2 where
+
 
 xor :: Bool -> Bool -> Bool
 xor x y
