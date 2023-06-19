@@ -114,5 +114,23 @@ propAlphasCorrect xs = verifyStr (alphas xs)
             |isUpper x = True && verifyStr xs
             |otherwise = False
 
+
+--Exe4
+
+above :: Int -> [Int] -> [Int]
+above n xs = filter (not . isLowerThan n) xs
+    where
+        isLowerThan n x
+            |x < 5 = True
+            |otherwise = False
+
+propAboveCorrect :: Int -> [Int] -> Bool
+propAboveCorrect n xs = verifyN n (above n xs)
+    where
+        verifyN _ [] = True
+        verifyN n (x : xs)
+            |x >= n = True && verifyN n xs
+            |otherwise = False
+
     
 
