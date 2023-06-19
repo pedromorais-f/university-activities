@@ -3,6 +3,8 @@ import Prelude hiding (gcd)
 
 --Recursao sobre inteiros
 
+--Exe1
+
 next :: Int -> Int
 next n
     |n `mod` 2 == 0 = n `div` 2
@@ -30,6 +32,9 @@ stepsList x
         where
             y = next x
             (ysValues, totalSteps) = stepsList y
+
+
+--Exe2
 
 
 gcd :: Int -> Int -> Int
