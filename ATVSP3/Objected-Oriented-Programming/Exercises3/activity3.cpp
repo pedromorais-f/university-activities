@@ -25,7 +25,7 @@ public:
     void setPreco(double);
     double getPreco() const;
 
-    double getTotalNota(const vector <NotaFiscal>&);
+    double getTotalNota(const vector <NotaFiscal>);
 
     friend ostream& operator<<(ostream&, const NotaFiscal&);
 };
@@ -66,10 +66,10 @@ double NotaFiscal :: getPreco() const{
     return this->preco;
 }
 
-double NotaFiscal :: getTotalNota(const vector<NotaFiscal>& notas){
+double NotaFiscal :: getTotalNota(const vector<NotaFiscal> notas){
     double total_preco = 0.0;
-    for (const NotaFiscal& nota : notas){
-        total_preco += nota.getQuantidade() * nota.getPreco();
+    for (auto nota : notas){
+        total_preco += (double(nota.getQuantidade()) * nota.getPreco());
     }
     return total_preco;
 }
@@ -87,8 +87,8 @@ ostream& operator<<(ostream& out, const NotaFiscal& nota){
 
 int main(int argc, char const *argv[]){
     
-    NotaFiscal nota1("001", "Test1", 34, 223.45);
-    NotaFiscal nota2("343", "Test2", 345,5676.34);
+    NotaFiscal nota1("001", "Test1", 3, 223.45);
+    NotaFiscal nota2("343", "Test2", 3,5676.34);
 
 
     vector<NotaFiscal> notas;
@@ -96,11 +96,11 @@ int main(int argc, char const *argv[]){
     notas.push_back(nota2);
     double total;
 
-    total = nota1.getTotalNota(notas);
+    total = nota2.getTotalNota(notas);
 
     cout << nota1 << endl;
     cout << nota2 << endl;
-    cout << total << endl;
+    cout << "Total: " << total << endl;
 
     return 0;
 }
