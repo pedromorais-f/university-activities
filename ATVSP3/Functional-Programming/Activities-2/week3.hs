@@ -1,16 +1,16 @@
-
-
-
+import Data.List (transpose)
+-- 1 2 3   1 2 3              
+-- 4 5 6   4 5 6   
 
 --Manipulacao de matrizes
 
 type Matrix = [[Float]]
 
 example :: Matrix
-example = [[1.0, 2.0, 3.0],[4.0, 5.0, 6.0], [2.0, 3.4, 5.8]]
+example = [[1.0, 2.0],[4.0, 5.0]]
 
 example1 :: Matrix
-example1 = [[1.0, 2.0, 3.0],[4.0, 5.0, 6.0], [2.0, 3.4, 5.8]]
+example1 = [[1.0, 2.0]]
 
 invalidExample :: Matrix
 invalidExample = [[1.0, 2.0, 3.0]]
@@ -78,10 +78,12 @@ sumMatrix _ _ = error "Invalid Sizes"
 innerProduct :: [Float] -> [Float] -> Float
 innerProduct [] _ = 0
 innerProduct _ [] = 0
-innerProduct (x : xs) (y : ys) = x*y + innerProduct xs ys
+innerProduct (x : xs) (y : ys) 
+    |length (x : xs) == length (y : ys) = x*y + innerProduct xs ys
+    |otherwise = error "Invalid Sizes"
 
--- multMatrix :: Matrix -> Matrix -> Matrix
--- multMatrix [] [] = []
+multMatrix :: Matrix -> Matrix -> Matrix
+multMatrix xs ys = [[innerProduct x y] | x <- xs , y <- transpose ys]
 
 
 
