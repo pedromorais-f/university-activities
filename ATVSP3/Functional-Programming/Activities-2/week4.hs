@@ -29,7 +29,24 @@ numberAll [] = []
 numberAll (x : xs) = numberWords x ++ numberAll xs
 
 
---sortEntries :: [(Int,Word)] -> [(Int, Word)]
+(.<.) :: (Int, Word) -> (Int, Word) -> Bool
+(l1, w1) .<. (l2, w2) = w1 < w2 || (w1 == w2 && l1 < l2)
+
+sortEntries :: [(Int,Word)] -> [(Int, Word)]
+sortEntries [] = []
+sortEntries (x : xs) = smallers ++ [x] ++ largers
+    where
+        smallers = sortEntries [(a, b) | (a, b) <- xs , (a, b) .<. x]
+        largers = sortEntries [(a, b) | (a, b) <- xs , not ((a, b) .<. x)]
+
+
+--combine :: [(Int, Word)] -> Index
+--combine [] = []
+
+
+
+
+
 
 
 
