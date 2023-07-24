@@ -57,7 +57,7 @@ data Field
   = Field {
       size :: Int
     , content :: [Bit]
-    } deriving (Eq, Ord)
+    } deriving (Eq, Ord, Show)
 
 
 data UDP
@@ -67,7 +67,7 @@ data UDP
     , plength :: Field      --- 16 bits
     , checksum :: Field     --- 16 bits
     , pdata :: [Field]      --- list of 32 bit fields
-    } deriving (Eq, Ord)
+    } deriving (Eq, Ord, Show)
 
 
 bitParser :: Parser Char Bit
@@ -83,7 +83,7 @@ bitList n = Parser (\inp -> case n of
                      n -> case inp of
                         [] -> []
                         xs -> [(
-                           (fst2 $ runParser (greedy bitParser) [x | (x, y) <- zip inp [0..], y < n]), drop n xs)]
+                           fst2 $ runParser (greedy bitParser) [x | (x, y) <- zip inp [0..], y < n], drop n xs)]
       )
       where
          fst2 [(a, b)] = a
@@ -91,4 +91,8 @@ bitList n = Parser (\inp -> case n of
 
 
 fieldParser :: Int -> Parser Char Field
-fieldParser n = undefined
+fieldParser n = Field n <$> bitList n
+
+
+udpParser :: Parser Char UDP
+udpParser = UDP <$> fieldParser 16 <*> fieldParser 16 <*> fieldParser 16 <*> fieldParser 16 <*> greedy (fieldParser 32)
