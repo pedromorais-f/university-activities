@@ -23,6 +23,10 @@ void printFiles(string filepath){
     file.close();
 }
 
+void removeEnter(string str){
+    str.replace(str.find('\n'), 1, '\0');
+}
+
 
 
 int main(int argc, char const *argv[]){
@@ -66,6 +70,7 @@ int main(int argc, char const *argv[]){
     system("top");
     cout << "Write the command(kill PIDs or kill -9 PIDs):" << endl;
     cin >> input;
+    removeEnter(input);
     command = input.c_str();
     system(command);
     cin.clear();
