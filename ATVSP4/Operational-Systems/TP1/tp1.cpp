@@ -23,10 +23,6 @@ void printFiles(string filepath){
     file.close();
 }
 
-void removeEnter(string str){
-    str.replace(str.find('\n'), 1, '\0');
-}
-
 
 
 int main(int argc, char const *argv[]){
@@ -36,7 +32,7 @@ int main(int argc, char const *argv[]){
     string studentFilePath = "PedroMorais.txt";
 
     //Command strings
-    string killCommand = "killall ";
+    string killAllCommand = "killall ";
     string pkillCommand = "pkill ";
     string reniceCommand = "renice ";
     const char *command;
@@ -66,28 +62,28 @@ int main(int argc, char const *argv[]){
     system("pstree");
     clearScreen();
 
-    //Forth command "kill"
+    //Forth command "kill" or "kill -9"
     system("top");
-    cout << "Write the command(kill PIDs or kill -9 PIDs):" << endl;
-    cin >> input;
-    removeEnter(input);
+    cout << "Write the command(kill Pids or kill -9 Pids):" << endl;
+    getline(cin, input, '\n');
     command = input.c_str();
     system(command);
-    cin.clear();
 
     cout << "\n" << endl;
 
     //Fifth command "killall"
+    system("top");
     cout << "Write the software:" << endl;
     cin >> input;
-    killCommand = killCommand + input;
-    command = killCommand.c_str();
+    killAllCommand = killAllCommand + input;
+    command = killAllCommand.c_str();
     system(command);
     cin.clear();
 
     cout << "\n" << endl;
 
     //Sixth command "pkill"
+    system("top");
     cout << "Write the software:" << endl;
     cin >> input;
     pkillCommand = pkillCommand + input;

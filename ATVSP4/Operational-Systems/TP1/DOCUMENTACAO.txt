@@ -1,0 +1,18 @@
+Primeiramente, para o inicio do trabalho foi criado um codigo em c++ e neste codigo foi feito
+uma funcao para a leitura dos arquivos "PedroMorais.txt" e "/etc/lsb-release".
+
+Apos a execucao destes comandos, começa-se a executar os comandos referentes ao terminal, primeiramente
+o comando "top" para checar os processos que estao em execucao, e como nao roda processos no Docker, foi criado
+um process.cpp, onde contem um codigo para simular a execucao de um processo.
+
+Apos a execucao do top, o comando "ps" e executado, que e basicamente a mesma coisa que o top,
+com menos detalhes.
+
+A seguir e executado o comando "pstree", outra de visualizaçao dos processos executados no sistema.
+
+Depois, e executado o comando "kill" ou  "kill -9", se o usuario preferir, atraves da leitura do que o 
+usuario digitar.
+
+Logo apos, sera executado os comandos killall e pkill, pedindo que escreva o software ou processo que deseja encerrar.
+
+E por fim e executado o comando "renice", que mudara a prioridade de algum processo a escolha do usuario.
